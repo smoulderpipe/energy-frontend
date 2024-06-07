@@ -10,14 +10,15 @@ buttonCounties.addEventListener("click", () => handleClick("getCounties"));
 buttonProvinces.addEventListener("click", () => handleClick("getProvinces"));
 buttonAddresses.addEventListener("click", () => handleClick("getAddresses"));
 
+const userToken = localStorage.getItem("userToken");
+
 const fetchData = async (res) => {
   const url = `http://localhost:8080/api/${res}`;
 
   const options = {
     method: "GET",
     headers: {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTc3NTM5NjEsImV4cCI6MTcxNzc1NzU2MSwic3ViIjoiMSJ9.2bjnaOZ2rOPNierT1L__35BJkt9z2JOJaCdaVY-J7_o",
+      Authorization: `Bearer ${userToken}`,
       "Content-Type": "application/json",
     },
   };
